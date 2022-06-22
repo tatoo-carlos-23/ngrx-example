@@ -6,8 +6,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { UserReducer } from './store/reducers/reducers';
+import { environment } from '../environments/environment'; 
+import { FormsModule } from '@angular/forms';
+import { reducersAll } from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { UserReducer } from './store/reducers/reducers';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    StoreModule.forRoot({ user: UserReducer }, {}),
+    StoreModule.forRoot({ ...reducersAll }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
